@@ -1,0 +1,24 @@
+baseURL = "https://yourdomain.com/"
+languageCode = "en-us"
+title = "Webcattus Labs"
+theme = ""
+
+[params]
+  description = "Cloud-native data engineering and analytics consulting for healthcare and enterprise."
+  tagline = "Engineering Data. Enabling Decisions."
+  email = "hello@webcattuslabs.com"
+  linkedin = ""
+
+[menu]
+  [[menu.main]]
+    name = "Services"
+    url = "/services/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3

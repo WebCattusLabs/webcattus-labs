@@ -1,0 +1,95 @@
+{{ define "main" }}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label">Reach Out</div>
+    <h1>Get in Touch</h1>
+    <p>Tell us about your data challenge — we'll respond within one business day.</p>
+  </div>
+</section>
+
+<section class="contact-body">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: Info -->
+      <div class="contact-info">
+        <div class="section-label">Contact</div>
+        <h2>Let's start a conversation</h2>
+        <p>Whether you need a full platform build, a pipeline audit, or just want to pressure-test an architecture idea — reach out. No obligation.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="18" height="18" fill="none" stroke="#2563EB" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          </div>
+          <span>hello@webcattuslabs.com</span>
+        </div>
+
+        <div style="margin-top: 2.5rem;">
+          <h3 style="margin-bottom: 1rem; font-size: 1rem;">Typical engagement timeline</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem;">
+              <span style="color: var(--blue-mid); font-weight: 700; min-width: 60px;">Day 1–2</span>
+              <span style="color: var(--text-mid);">Initial response and discovery call scheduled</span>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem;">
+              <span style="color: var(--blue-mid); font-weight: 700; min-width: 60px;">Day 3–5</span>
+              <span style="color: var(--text-mid);">Scope discussion and proposal</span>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem;">
+              <span style="color: var(--blue-mid); font-weight: 700; min-width: 60px;">Week 2</span>
+              <span style="color: var(--text-mid);">Statement of Work and engagement kick-off</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form (uses Formspree — replace YOUR_FORM_ID) -->
+      <div class="contact-form">
+        <h3 style="margin-bottom: 1.75rem;">Send us a message</h3>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Work Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company / Organization</label>
+            <input type="text" id="company" name="company" placeholder="Acme Corp" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Area of Interest</label>
+            <select id="service" name="service">
+              <option value="">— Select a service —</option>
+              <option>Data Pipeline Engineering</option>
+              <option>Cloud Data Platform (GCP)</option>
+              <option>Healthcare & PBM Analytics</option>
+              <option>DataOps & Automation</option>
+              <option>AI & Analytics Integration</option>
+              <option>Advisory / Architecture Review</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell us about your challenge</label>
+            <textarea id="message" name="message" placeholder="Briefly describe your data problem, current stack, and what you're hoping to achieve..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message →</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{{ end }}
