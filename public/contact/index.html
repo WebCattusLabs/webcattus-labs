@@ -1,4 +1,58 @@
-{{ define "main" }}
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Tell us about your data challenge — we&#39;ll respond within one business day." />
+<title>Contact | Webcattus Labs</title>
+
+
+<link rel="canonical" href="http://localhost:1313/contact/" />
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+
+<link rel="stylesheet" href="/css/style.css" />
+
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231E3A8A'/><text y='.9em' font-size='60' x='50%' text-anchor='middle'>W</text></svg>" />
+
+
+<meta property="og:title" content="Contact" />
+<meta property="og:description" content="Cloud-native data engineering and analytics consulting for Big Tech and enterprise." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://localhost:1313/contact/" />
+
+</head>
+<body>
+  <nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">Webcattus<span>Labs</span></a>
+
+    <ul class="nav-links">
+      
+        <li><a href="/services/">Services</a></li>
+      
+        <li><a href="/about/">About</a></li>
+      
+        <li><a href="/contact/">Contact</a></li>
+      
+    </ul>
+
+    <div class="nav-cta">
+      <a href="/contact/" class="btn btn-primary">Get in Touch</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').style.display = this.closest('nav').querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+  <main>
+    
 
 <section class="page-hero">
   <div class="container">
@@ -12,7 +66,7 @@
   <div class="container">
     <div class="contact-grid">
 
-      <!-- Left: Info -->
+      
       <div class="contact-info">
         <div class="section-label">Contact</div>
         <h2>Let's start a conversation</h2>
@@ -44,7 +98,7 @@
         </div>
       </div>
 
-      <!-- Right: Form (uses Formspree — replace YOUR_FORM_ID) -->
+      
       <div class="contact-form">
         <h3 style="margin-bottom: 1.75rem;">Send us a message</h3>
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
@@ -92,4 +146,39 @@
   </div>
 </section>
 
-{{ end }}
+
+  </main>
+  <footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="/">Webcattus<span>Labs</span></a>
+        <p>Cloud-native data engineering and analytics consulting for healthcare and enterprise clients.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/">Data Pipeline Engineering</a></li>
+          <li><a href="/services/">Cloud Data Platform</a></li>
+          <li><a href="/services/">Healthcare & PBM Analytics</a></li>
+          <li><a href="/services/">DataOps & Automation</a></li>
+          <li><a href="/services/">AI & Analytics Integration</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Webcattus Labs. All rights reserved.</p>
+      <p>hello@webcattuslabs.com</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
