@@ -1,10 +1,9 @@
-baseURL = "https://yourdomain.com/"
+baseURL = "https://webcattuslabs.com/"
 languageCode = "en-us"
 title = "Webcattus Labs"
-theme = ""
 
 [params]
-  description = "Cloud-native data engineering and analytics consulting for healthcare and enterprise."
+  description = "Cloud-native data engineering and analytics consulting for Big Tech and enterprise."
   tagline = "Engineering Data. Enabling Decisions."
   email = "hello@webcattuslabs.com"
   linkedin = ""
