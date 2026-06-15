@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webcattus Labs — Engineering Data. Enabling Decisions.</title>
+  <meta name="description" content="Cloud-native data engineering and analytics consulting for healthcare and enterprise." />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:   #080E1C;
+      --blue:   #2563EB;
+      --cyan:   #38BDF8;
+      --light:  #F1F5F9;
+      --white:  #FFFFFF;
+      --text:   #1E293B;
+      --muted:  #64748B;
+      --border: #E2E8F0;
+      --max:    1080px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── NAV ───────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 99;
+      background: rgba(8,14,28,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .logo { font-size: 1.1rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+    .logo span { color: var(--cyan); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.55); font-size: 0.88rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .btn {
+      display: inline-block; padding: .55rem 1.25rem;
+      border-radius: 7px; font-size: 0.88rem; font-weight: 600;
+      transition: all .2s; cursor: pointer;
+    }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn-outline { border: 1.5px solid rgba(255,255,255,0.25); color: #fff; }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+    .btn-lg { padding: .75rem 1.75rem; font-size: 0.95rem; border-radius: 8px; }
+
+    /* ── HERO ──────────────────────────────── */
+    #home {
+      background: var(--navy);
+      padding: 7rem 1.5rem 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #home::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(37,99,235,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(56,189,248,.12);
+      border: 1px solid rgba(56,189,248,.25);
+      color: var(--cyan);
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .3rem .9rem; border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    #home h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -.03em; color: #fff;
+      margin-bottom: 1.25rem;
+    }
+    #home h1 span { color: var(--cyan); }
+    #home p {
+      color: rgba(255,255,255,.6);
+      font-size: 1.1rem; max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* Stack */
+    .stack {
+      display: flex; justify-content: center;
+      flex-wrap: wrap; gap: .5rem;
+      margin-top: 3.5rem;
+    }
+    .stack-pill {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.5);
+      font-size: .75rem; font-weight: 600;
+      padding: .3rem .8rem; border-radius: 100px;
+    }
+
+    /* ── SECTION SHARED ────────────────────── */
+    section { padding: 5rem 1.5rem; }
+    .section-label {
+      display: inline-block; font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: .75rem;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800; letter-spacing: -.02em;
+      line-height: 1.15; margin-bottom: .75rem;
+    }
+    .sub { color: var(--muted); font-size: 1.05rem; max-width: 520px; }
+
+    /* ── SERVICES ──────────────────────────── */
+    #services { background: var(--white); }
+    #services .wrap { max-width: var(--max); margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem; margin-top: 3rem;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.75rem;
+      transition: all .2s;
+    }
+    .card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(37,99,235,.1); transform: translateY(-2px); }
+    .card-icon {
+      width: 42px; height: 42px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem; font-size: 1.3rem;
+    }
+    .i-blue   { background: rgba(37,99,235,.1); }
+    .i-cyan   { background: rgba(56,189,248,.1); }
+    .i-green  { background: rgba(52,211,153,.1); }
+    .i-purple { background: rgba(167,139,250,.1); }
+    .i-orange { background: rgba(251,146,60,.1); }
+    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+    .card p  { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+    .card-cta {
+      background: var(--light); border-style: dashed;
+      display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: center;
+    }
+    .card-cta h3 { margin-bottom: .4rem; }
+    .card-cta p  { margin-bottom: 1.25rem; }
+    .card-cta .btn-dark {
+      background: var(--navy); color: #fff;
+      padding: .55rem 1rem; border-radius: 7px;
+      font-size: .85rem; font-weight: 600;
+    }
+    .card-cta .btn-dark:hover { background: var(--blue); }
+
+    /* ── WHY ───────────────────────────────── */
+    #why { background: var(--light); }
+    #why .wrap { max-width: var(--max); margin: 0 auto; }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 2rem; margin-top: 3rem;
+    }
+    .why-item { display: flex; gap: 1.25rem; }
+    .why-num {
+      font-size: 2rem; font-weight: 800;
+      color: var(--blue); line-height: 1;
+      min-width: 48px; flex-shrink: 0;
+    }
+    .why-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: .35rem; }
+    .why-item p  { font-size: .9rem; color: var(--muted); }
+
+    /* ── CONTACT ───────────────────────────── */
+    #contact { background: var(--white); }
+    #contact .wrap { max-width: var(--max); margin: 0 auto; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 4rem; margin-top: 3rem; align-items: start;
+    }
+    .contact-info h3 { font-size: 1rem; font-weight: 700; margin-bottom: .35rem; }
+    .contact-info p  { font-size: .9rem; color: var(--muted); margin-bottom: 1.75rem; }
+    .contact-email {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .9rem; color: var(--blue); font-weight: 600;
+    }
+    .timeline { margin-top: 2rem; display: flex; flex-direction: column; gap: .75rem; }
+    .tl-row { display: flex; gap: .75rem; font-size: .85rem; }
+    .tl-row span:first-child { color: var(--blue); font-weight: 700; min-width: 58px; }
+    .tl-row span:last-child  { color: var(--muted); }
+
+    form {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fg { margin-bottom: 1.25rem; }
+    .fg label { display: block; font-size: .82rem; font-weight: 600; margin-bottom: .4rem; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; padding: .65rem .9rem;
+      border: 1.5px solid var(--border); border-radius: 7px;
+      font-family: inherit; font-size: .9rem; color: var(--text);
+      background: var(--white); outline: none; transition: border .2s;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--blue); }
+    .fg textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      width: 100%; padding: .75rem;
+      background: var(--blue); color: #fff;
+      border: none; border-radius: 8px;
+      font-size: .95rem; font-weight: 700;
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-submit:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+    /* ── CTA BANNER ────────────────────────── */
+    .cta-banner {
+      background: var(--navy); padding: 5rem 1.5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(37,99,235,.2) 0%, transparent 70%);
+    }
+    .cta-banner h2 { color: #fff; position: relative; margin-bottom: .75rem; }
+    .cta-banner p  { color: rgba(255,255,255,.55); position: relative; margin-bottom: 2rem; font-size: 1.05rem; }
+
+    /* ── FOOTER ────────────────────────────── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    footer .logo { font-size: 1rem; }
+    footer p { color: rgba(255,255,255,.35); font-size: .82rem; }
+    footer a { color: rgba(255,255,255,.35); font-size: .82rem; }
+    footer a:hover { color: rgba(255,255,255,.7); }
+
+    /* ── RESPONSIVE ────────────────────────── */
+    @media (max-width: 860px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid  { grid-template-columns: 1fr; gap: 2.5rem; }
+      .why-grid      { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row      { grid-template-columns: 1fr; }
+      .nav-links, nav .btn { display: none; }
+      #home { padding: 5rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="logo">Webcattus<span>Labs</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-blue">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-badge">Data Engineering Consultancy</div>
+  <h1>Engineering Data.<br><span>Enabling Decisions.</span></h1>
+  <p>Webcattus Labs builds cloud-native data platforms and analytics solutions for healthcare and enterprise — turning raw data into reliable, production-grade pipelines.</p>
+  <div class="hero-btns">
+    <a href="#services" class="btn btn-blue btn-lg">View Services</a>
+    <a href="#contact" class="btn btn-outline btn-lg">Get in Touch</a>
+  </div>
+  <div class="stack">
+    <span class="stack-pill">GCP Professional Data Engineer</span>
+    <span class="stack-pill">GCP Cloud Architect</span>
+    <span class="stack-pill">Databricks Professional</span>
+    <span class="stack-pill">PMP Certified</span>
+    <span class="stack-pill">PySpark · Airflow · BigQuery</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What We Do</div>
+    <h2>End-to-end data solutions</h2>
+    <p class="sub">From raw ingestion to decision intelligence — we own every layer of your data platform.</p>
+
+    <div class="services-grid">
+
+      <div class="card">
+        <div class="card-icon i-blue">🗄️</div>
+        <h3>Data Pipeline Engineering</h3>
+        <p>End-to-end pipeline design — batch, streaming, and hybrid — built for reliability and scale using PySpark, Databricks, and BigQuery.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon i-cyan">☁️</div>
+        <h3>Cloud Data Platform</h3>
+        <p>GCP architecture, Databricks implementation, BigQuery optimization, and cloud cost management from proof-of-concept to production.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon i-green">📊</div>
+        <h3>Healthcare &amp; PBM Analytics</h3>
+        <p>Underwriting analytics, claims data modeling, and formulary intelligence for pharmacy benefit management and healthcare payers.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon i-purple">⚙️</div>
+        <h3>DataOps &amp; Automation</h3>
+        <p>CI/CD for data pipelines, Apache Airflow orchestration, automated testing, and GitHub Actions workflows that eliminate toil.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon i-orange">🤖</div>
+        <h3>AI &amp; Analytics Integration</h3>
+        <p>Generative AI integration, LLM-powered data workflows, and ML pipeline development that turn your platform into a decision engine.</p>
+      </div>
+
+      <div class="card card-cta">
+        <h3>Not sure where to start?</h3>
+        <p>Tell us about your data challenge — we'll scope a solution together.</p>
+        <a href="#contact" class="btn-dark">Start a Conversation →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-label">Why Webcattus Labs</div>
+    <h2>Built for technical depth,<br>not just deliverables</h2>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div>
+          <h3>Full-stack ownership</h3>
+          <p>We take end-to-end accountability — from pipeline architecture to deployment monitoring. No handoff gaps.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div>
+          <h3>Healthcare-native expertise</h3>
+          <p>Deep experience with PBM underwriting data, claims schema, and healthcare compliance — not a generalist learning on the job.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div>
+          <h3>Research-backed approach</h3>
+          <p>Peer-reviewed publications in data systems and decision intelligence inform how we design solutions — rigorously, not just practically.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div>
+          <h3>Production-first thinking</h3>
+          <p>We build for day 30, not just day 1 — with monitoring, alerting, documentation, and handover baked in from the start.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-label">Get in Touch</div>
+    <h2>Let's talk about your data</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Reach out directly</h3>
+        <p>Tell us about your challenge and we'll respond within one business day.</p>
+        <div class="contact-email">
+          <span>📧</span>
+          <a href="mailto:hello@webcattuslabs.com">hello@webcattuslabs.com</a>
+        </div>
+        <div class="timeline">
+          <div class="tl-row"><span>Day 1–2</span><span>Initial response &amp; discovery call</span></div>
+          <div class="tl-row"><span>Day 3–5</span><span>Scope discussion &amp; proposal</span></div>
+          <div class="tl-row"><span>Week 2</span><span>Statement of Work &amp; kick-off</span></div>
+        </div>
+      </div>
+
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="fg">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Jane Smith" required />
+          </div>
+          <div class="fg">
+            <label>Work Email</label>
+            <input type="email" name="email" placeholder="jane@company.com" required />
+          </div>
+        </div>
+        <div class="fg">
+          <label>Company</label>
+          <input type="text" name="company" placeholder="Acme Corp" />
+        </div>
+        <div class="fg">
+          <label>Area of Interest</label>
+          <select name="service">
+            <option value="">— Select a service —</option>
+            <option>Data Pipeline Engineering</option>
+            <option>Cloud Data Platform (GCP)</option>
+            <option>Healthcare &amp; PBM Analytics</option>
+            <option>DataOps &amp; Automation</option>
+            <option>AI &amp; Analytics Integration</option>
+            <option>Advisory / Architecture Review</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Tell us about your challenge</label>
+          <textarea name="message" placeholder="Describe your data problem, current stack, and what you're hoping to achieve..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>Ready to modernize your data stack?</h2>
+  <p>Let's discuss your pipeline challenges and design something that scales.</p>
+  <a href="#contact" class="btn btn-blue btn-lg" style="position:relative;">Start a Conversation</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#home" class="logo">Webcattus<span>Labs</span></a>
+    <p>&copy; 2026 Webcattus Labs. All rights reserved.</p>
+    <a href="mailto:hello@webcattuslabs.com">hello@webcattuslabs.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
