@@ -34,46 +34,25 @@
   <div class="wrap">
     <p class="label">AI Readiness Audit</p>
     <h1 id="ct-title">Book your free AI Readiness Audit</h1>
-    <p class="lead">Tell us a little about your business, then pick a time. In 30 minutes you'll learn which tasks are worth automating, roughly what each is worth, and what it would take.</p>
+    <p class="lead">Send a short note about what's slowing you down. We'll reply within one business day to set up a free 30-minute call, where you'll learn which tasks are worth automating and roughly what each is worth.</p>
   </div>
 </section>
 
 <section class="section" style="padding-top:clamp(1rem,.5rem + 1.5vw,2rem)">
   <div class="wrap contact-layout">
     <div class="form-card">
-      <div class="progress" aria-label="Booking progress">
-        <span class="pill is-current">1 · About your business</span><span aria-hidden="true">→</span><span class="pill">2 · Pick a time</span>
-      </div>
-
-      <form id="booking-form" method="POST"
+      <div class="progress" aria-hidden="true"><span class="pill is-current">1 · Your details</span><span>→</span><span class="pill">2 · Pick a time</span></div>
+      <form id="booking-form" method="POST" data-booking-url="https://calendar.app.google/SWLNNv461UkWab276"
             action="https://lead-router.webcattus.workers.dev/form/webcattus?redirect=https%3A%2F%2Fwebcattuslabs.com%2Fcontact.html">
         <fieldset class="fieldset">
-          <legend>About you</legend>
+          <legend class="sr-only">Tell us a little about you</legend>
           <div class="fields">
-            <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
-            <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="160"></div>
-            <div class="field"><label for="f-company">Business name</label><input id="f-company" name="company" type="text" autocomplete="organization" required maxlength="120"></div>
+            <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="160"></div>
             <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
-            <div class="field field--full"><label for="f-site">Website <span class="opt">(optional)</span></label><input id="f-site" name="site_url" type="url" inputmode="url" placeholder="https://" maxlength="200"></div>
-          </div>
-        </fieldset>
-
-        <fieldset class="fieldset">
-          <legend>About your business</legend>
-          <div class="fields">
-            <div class="field"><label for="f-industry">Industry</label>
-              <select id="f-industry" name="industry" required><option value="">Choose one</option><option>Restaurant or food &amp; beverage</option><option>Home services</option><option>Construction</option><option>Professional services</option><option>Health &amp; wellness</option><option>Retail or e-commerce</option><option>Real estate</option><option>Other</option></select></div>
-            <div class="field"><label for="f-size">Team size</label>
-              <select id="f-size" name="team_size" required><option value="">Choose one</option><option>Just me</option><option>2–10 people</option><option>11–50 people</option><option>51–200 people</option></select></div>
-            <div class="field field--full"><span class="field__label" id="drains-label">Where does your time go? <span class="opt">Pick any that apply</span></span>
-              <div role="group" aria-labelledby="drains-label"><div class="chips"><label class="chip"><input type="checkbox" name="drains" value="Missed calls &amp; slow replies"><span>Missed calls &amp; slow replies</span></label><label class="chip"><input type="checkbox" name="drains" value="Catering &amp; private events"><span>Catering &amp; private events</span></label><label class="chip"><input type="checkbox" name="drains" value="Online reviews"><span>Online reviews</span></label><label class="chip"><input type="checkbox" name="drains" value="Hours &amp; menu listings"><span>Hours &amp; menu listings</span></label><label class="chip"><input type="checkbox" name="drains" value="Scheduling &amp; booking"><span>Scheduling &amp; booking</span></label><label class="chip"><input type="checkbox" name="drains" value="Quotes &amp; proposals"><span>Quotes &amp; proposals</span></label><label class="chip"><input type="checkbox" name="drains" value="Data entry &amp; admin"><span>Data entry &amp; admin</span></label><label class="chip"><input type="checkbox" name="drains" value="Customer questions"><span>Customer questions</span></label><label class="chip"><input type="checkbox" name="drains" value="Marketing &amp; content"><span>Marketing &amp; content</span></label><label class="chip"><input type="checkbox" name="drains" value="Not sure yet"><span>Not sure yet</span></label></div></div></div>
-            <div class="field"><label for="f-budget">Budget for a first project</label>
-              <select id="f-budget" name="budget"><option value="">Prefer not to say</option><option>Under $2,500</option><option>$2,500–$7,500</option><option>$7,500–$15,000</option><option>$15,000+</option><option>Not sure yet</option></select>
-              <span class="hint">Helps us suggest the right starting point.</span></div>
-            <div class="field"><label for="f-timeline">When do you want to start?</label>
-              <select id="f-timeline" name="timeline"><option value="">Choose one</option><option>As soon as possible</option><option>Within 1–3 months</option><option>In 3–6 months</option><option>Just exploring</option></select></div>
-            <div class="field field--full"><label for="f-message">What would you most like to fix? <span class="opt">(optional)</span></label>
-              <textarea id="f-message" name="message" maxlength="2000" placeholder="For example: we miss catering calls during dinner service, and I spend Sunday nights on invoices."></textarea></div>
+            <div class="field"><label for="f-company">Business name <span class="opt">(optional)</span></label><input id="f-company" name="company" type="text" autocomplete="organization" maxlength="120"></div>
+            <div class="field field--full"><label for="f-message">What can we help with?</label>
+              <textarea id="f-message" name="message" required maxlength="2000" placeholder="For example: we miss calls during dinner service and I spend Sunday nights on invoices."></textarea></div>
           </div>
         </fieldset>
 
@@ -81,23 +60,24 @@
         <input type="hidden" name="_elapsed" value="">
 
         <div class="form-foot">
-          <button class="btn btn--primary" type="submit">Send and pick a time <span class="arrow" aria-hidden="true">→</span></button>
-          <p class="small muted">We'll only use this to prepare for your call. No newsletters.</p>
+          <button class="btn btn--primary" type="submit">Send message <span class="arrow" aria-hidden="true">→</span></button>
+          <p class="small muted">We'll reply within one business day. No newsletters.</p>
         </div>
         <p class="form-status" role="alert" hidden></p>
       </form>
 
       <div class="booked" hidden tabindex="-1" role="status" aria-live="polite">
         <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span>
-        <h2 data-hello>Thanks. Your details are in.</h2>
-        <p>Last step: choose a 30-minute slot that works for you. You'll get a calendar invite with a video link.</p>
+        <h2 data-hello>Thanks. We got your message.</h2>
+        <p data-with-cal hidden>One more step: pick a 30-minute time that works for you. You'll get a calendar invite with a video link.</p>
         <a class="btn btn--primary" data-calendar hidden href="#" target="_blank" rel="noopener">Pick a time <span class="arrow" aria-hidden="true">→</span></a>
-        <p data-no-calendar>We'll email you two or three times within one business day. Prefer to talk sooner? Write to <b>hello@webcattuslabs.com</b>.</p>
+        <p data-no-calendar>We'll reply within one business day, usually sooner. Want to talk now? Call <a href="tel:+16147211118"><b>(614) 721-1118</b></a>.</p>
         <p class="small muted" data-preview hidden>Preview mode: nothing was sent. On webcattuslabs.com this form goes straight to Lead Router.</p>
       </div>
     </div>
 
     <aside class="side" aria-label="What to expect">
+      <div class="card"><h3>Rather pick a time now?</h3><p>Choose a 30-minute slot directly on our calendar.</p><a class="btn btn--ghost" href="https://calendar.app.google/SWLNNv461UkWab276" target="_blank" rel="noopener">Open the calendar <span class="arrow" aria-hidden="true">→</span></a></div>
       <div class="card">
         <h3>What happens on the call</h3>
         <ol>
@@ -105,10 +85,6 @@
           <li>We point out the two or three tasks most worth automating.</li>
           <li>You get a rough estimate of hours or revenue for each, and what it would take.</li>
         </ol>
-      </div>
-      <div class="card">
-        <h3>You'll leave with</h3>
-        <ul class="checks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>A written summary within one business day</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Honest advice, including when AI isn't the answer</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>No obligation and no sales sequence</span></li></ul>
       </div>
       <div class="card">
         <h3>Rather talk now?</h3>
