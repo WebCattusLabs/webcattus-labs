@@ -8,29 +8,26 @@
   var CONFIG = {
     // Lead Router form endpoint (Cloudflare Worker).
     leadEndpoint: "https://lead-router.webcattus.workers.dev/form/webcattus",
-    // Your scheduling link. Until it's set, the success screen promises an email with times instead.
-    calendlyUrl: "https://calendly.com/YOUR-HANDLE/ai-readiness-audit",
     // Hosts where the form really submits. Anywhere else (a preview), it simulates success.
     liveHosts: ["webcattuslabs.com", "www.webcattuslabs.com", "localhost", "127.0.0.1"],
     email: "hello@webcattuslabs.com"
   };
-  var calendlyReady = CONFIG.calendlyUrl.indexOf("YOUR-HANDLE") === -1;
 
   var ES = (document.documentElement.lang || "en").slice(0, 2) === "es";
   var T = ES ? {
     openMenu: "Abrir menú", closeMenu: "Cerrar menú", copied: "Copiado", perWeek: " / semana",
-    sending: "Enviando… ", submit: "Enviar y elegir horario ", noMessage: "(Sin mensaje)",
+    sending: "Enviando… ", submit: "Enviar mensaje ", noMessage: "(Sin mensaje)",
     invalid: "Necesitamos un teléfono o correo electrónico válido.",
     tooMany: "Ya nos envió varias solicitudes. Escríbanos a " + CONFIG.email + ".",
     failed: "No pudimos enviarlo en este momento. Inténtelo de nuevo o escríbanos a " + CONFIG.email + ".",
-    hello: function (n) { return "Gracias, " + n + ". Recibimos sus datos."; }
+    hello: function (n) { return "Gracias, " + n + ". Recibimos su mensaje."; }
   } : {
     openMenu: "Open menu", closeMenu: "Close menu", copied: "Copied", perWeek: " / week",
-    sending: "Sending… ", submit: "Send and pick a time ", noMessage: "(No message)",
+    sending: "Sending… ", submit: "Send message ", noMessage: "(No message)",
     invalid: null,
     tooMany: "You've sent a few requests already. Please email us at " + CONFIG.email + ".",
     failed: "We couldn't send that just now. Please try again, or email " + CONFIG.email + ".",
-    hello: function (n) { return "Thanks, " + n + ". Your details are in."; }
+    hello: function (n) { return "Thanks, " + n + ". We got your message."; }
   };
 
   var root = document.documentElement;
@@ -159,7 +156,7 @@
     body.set("email", val("email"));
     body.set("phone", val("phone"));
     body.set("company", val("company"));
-    body.set("service", drains[0] || val("industry") || "AI Readiness Audit");
+    body.set("service", drains[0] || val("industry") || "Free consultation");
     body.set("message", (val("message") || T.noMessage) + (qual.length ? "\n\n" + qual.join("\n") : ""));
     body.set("website_hp", val("website_hp"));
     body.set("_elapsed", String(Date.now() - opened));
@@ -201,13 +198,20 @@
     if (hi && first) hi.textContent = T.hello(first);
     var cal = booked.querySelector("[data-calendar]");
     var noCal = booked.querySelector("[data-no-calendar]");
-    if (calendlyReady && cal) {
-      var url = new URL(CONFIG.calendlyUrl);
-      if (ES) url.searchParams.set("locale", "es");
-      if (info.name) url.searchParams.set("name", info.name);
-      if (info.email) url.searchParams.set("email", info.email);
+    var withCal = booked.querySelector("[data-with-cal]");
+    // Scheduling link comes from BOOKING_URL in build.py (empty = no calendar step).
+    var bookingUrl = form.getAttribute("data-booking-url") || "";
+    if (bookingUrl && cal) {
+      var url = new URL(bookingUrl);
+      // Calendly accepts prefill parameters; Google Calendar booking links are used as-is.
+      if (/calendly\.com$/.test(url.hostname)) {
+        if (ES) url.searchParams.set("locale", "es");
+        if (info.name) url.searchParams.set("name", info.name);
+        if (info.email) url.searchParams.set("email", info.email);
+      }
       cal.href = url.toString();
       cal.hidden = false;
+      if (withCal) withCal.hidden = false;
       if (noCal) noCal.hidden = true;
     }
     var prev = booked.querySelector("[data-preview]");
